@@ -149,6 +149,7 @@ const DesignForm = ({ onSubmit, initialData, isDirty, setIsDirty }) => {
     <>
       <form onSubmit={handleSubmit} className="p-4 rounded" style={{ backgroundColor: '#F0F0F0' }}>
         <div className="mb-2 row align-items-center">
+        <h2 className="m-0 mb-3">Create Your Design</h2>
           <label htmlFor="designName" className="col-2 col-form-label text-start mb-2">Design Name:</label>
           <div className="col-9 mb-2">
             <input

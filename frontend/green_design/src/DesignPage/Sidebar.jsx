@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
 import { db } from '../config/firebase';
 
-const Sidebar = ({ onSelectDesign }) => {
+const Sidebar = ({ onSelectDesign, onMouseEnter, onMouseLeave }) => {
   const [designs, setDesigns] = useState([]);
 
   useEffect(() => {
@@ -21,12 +21,21 @@ const Sidebar = ({ onSelectDesign }) => {
   }, []);
 
   return (
-    <nav className="col-md-3 col-lg-2 d-md-block sidebar shadow-lg">
-      <div className="position-sticky pt-3">
-        <h3 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>History</span>
-        </h3>
-        <hr/>
+    <nav 
+      className="col-md-3 col-lg-2 sidebar shadow-lg p-0 d-flex flex-column" 
+      style={{ 
+        backgroundColor: 'rgba(64, 64, 64, 0.7)',
+        height: '100vh',
+        position: 'sticky',
+        top: 0,
+      }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="px-3 pt-3 flex-grow-1 overflow-auto">
+        <h5 className="sidebar-heading d-flex justify-content-between align-items-center mt-2 mb-2 text-muted">
+          <span className='text-white'>History</span>
+        </h5>
         <ul className="nav flex-column">
           {designs.length > 0 ? (
             designs.map((design) => (
